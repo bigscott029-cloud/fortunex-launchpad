@@ -2,9 +2,16 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { generateWhatsAppUrl, PLANS, CONFIG } from "@/config/fortunex";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden FortuneX logo
+import logoGold from "@/assets/logo-gold.png";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 // Payment account details - edit these values
 const PAYMENT_ACCOUNT = {
@@ -18,8 +25,10 @@ const Payment = () => {
   const [planName, setPlanName] = useState("FortuneX Starter");
   const [planKey, setPlanKey] = useState("starter");
   const [amount, setAmount] = useState(7500);
+  const [userName, setUserName] = useState("");
   const [timeLeft, setTimeLeft] = useState(600); // 10 minutes in seconds
   const [copied, setCopied] = useState(false);
+  const [showPaymentDialog, setShowPaymentDialog] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -30,6 +39,12 @@ const Payment = () => {
     if (planData) {
       setPlanName(planData.name);
       setAmount(planData.price);
+    }
+    
+    // Get user name from params
+    const name = searchParams.get("name");
+    if (name) {
+      setUserName(name);
     }
   }, [searchParams]);
 
@@ -69,6 +84,11 @@ const Payment = () => {
   };
 
   const handlePaymentMade = () => {
+    // Show the "not paid" popup
+    setShowPaymentDialog(true);
+  };
+
+  const handleContactAdmin = () => {
     const reference = `FX${Date.now()}`;
     const whatsappMessage = `Hello Admin, I want to register for ${planName} (₦${amount.toLocaleString()}). My payment reference is ${reference} (Send your payment screenshot). Please verify my payment.`;
     const whatsappUrl = generateWhatsAppUrl(whatsappMessage);
@@ -76,7 +96,37 @@ const Payment = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen wine-theme bg-background flex flex-col">
+      {/* Payment Not Made Dialog */}
+      <Dialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
+        <DialogContent className="bg-card border-border max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-foreground text-center text-xl font-display">
+              Payment Not Detected
+            </DialogTitle>
+            <DialogDescription className="text-center text-muted-foreground pt-4">
+              You have not made payment, try again or contact admin.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-3 mt-4">
+            <Button
+              variant="gold"
+              onClick={() => setShowPaymentDialog(false)}
+              className="w-full"
+            >
+              Try Again
+            </Button>
+            <Button
+              variant="outline"
+              onClick={handleContactAdmin}
+              className="w-full border-gold text-gold hover:bg-gold/10"
+            >
+              Contact Admin
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
       {/* Navigation */}
       <nav className="bg-background border-b border-border">
         <div className="container flex items-center justify-center h-16 md:h-20">
