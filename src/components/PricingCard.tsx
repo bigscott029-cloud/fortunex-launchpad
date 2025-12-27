@@ -1,6 +1,6 @@
 import { Check, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { generatePaymentUrl } from "@/config/fortunex";
+import { useNavigate } from "react-router-dom";
 
 interface PricingFeature {
   label: string;
@@ -28,9 +28,10 @@ const PricingCard = ({
   popular = false,
   index = 0,
 }: PricingCardProps) => {
+  const navigate = useNavigate();
+  
   const handleRegister = () => {
-    const paymentUrl = generatePaymentUrl(planKey, price);
-    window.location.href = paymentUrl;
+    navigate(`/register?plan=${planKey}`);
   };
 
   return (
