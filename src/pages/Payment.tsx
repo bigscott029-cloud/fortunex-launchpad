@@ -115,14 +115,7 @@ const Payment = () => {
               className="w-full"
             >
               Try Again
-            </Button>
-            <Button
-              variant="outline"
-              onClick={handleContactAdmin}
-              className="w-full border-gold text-gold hover:bg-gold/10"
-            >
-              Contact Admin
-            </Button>
+                  </Button>
           </div>
         </DialogContent>
       </Dialog>
