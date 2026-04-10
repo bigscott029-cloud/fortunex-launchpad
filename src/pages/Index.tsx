@@ -17,7 +17,7 @@ const Index = () => {
               <img src={logoGold} alt="FortuneX Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
-              Fortune<span className="text-gold">X</span>
+              <span className="text-gold">G</span>lamour
             </span>
           </Link>
           
@@ -58,12 +58,12 @@ const Index = () => {
               {/* Headline */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 animate-fade-up-delay-1">
                 Turn Your Time Into{" "}
-                <span className="text-gradient-gold">Real Income</span>
+                <span className="text-gradient-gold">Unlimited Income</span>
               </h1>
               
               {/* Subtext */}
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 animate-fade-up-delay-2">
-                Join thousands of Nigerians earning daily rewards through simple tasks, 
+                Join thousands of Africans earning daily rewards through simple tasks, 
                 engaging content, and exciting games. No experience needed!
               </p>
               
@@ -123,10 +123,10 @@ const Index = () => {
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Why Choose <span className="text-gradient-gold">FortuneX</span>?
+              Why Choose <span className="text-gradient-gold">GLAMOUR</span>?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Start your earning journey with the most trusted platform in Nigeria
+              Start your earning journey with the most trusted platform in Africa!
             </p>
           </div>
           
@@ -179,7 +179,7 @@ const Index = () => {
                 Ready to Start Earning?
               </h2>
               <p className="text-foreground/80 max-w-xl mx-auto mb-8">
-                Join over {CONFIG.MEMBER_COUNT} members who are already earning daily with FortuneX
+                Join over {CONFIG.MEMBER_COUNT} members who are already earning daily with Glamour!
               </p>
               <Link to="/pricing">
                 <Button variant="wine" size="xl">
@@ -196,7 +196,7 @@ const Index = () => {
       <footer className="py-8 border-t border-border">
         <div className="container text-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} FortuneX. All rights reserved.
+            © {new Date().getFullYear()} GLAMOUR. All rights reserved.
           </p>
         </div>
       </footer>
