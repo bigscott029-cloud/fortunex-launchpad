@@ -182,7 +182,7 @@ const Index = () => {
                 Join over {CONFIG.MEMBER_COUNT} members who are already earning daily with Glamour!
               </p>
               <Link to="/pricing">
-                <<Button variant="bg-amber-500" size="xl">
+                <Button variant="bg-amber-500" size="xl">
                   View Plans & Register
                   <ArrowRight className="w-5 h-5 w-5" />
                 </Button>
