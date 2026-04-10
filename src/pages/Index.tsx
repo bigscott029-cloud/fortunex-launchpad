@@ -184,7 +184,7 @@ const Index = () => {
               <Link to="/pricing">
                 <Button 
                   size="xl"
-                  className="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white shadow-lg hover:shadow-2xl transition-all duration-300 font-semibold"
+                  className="bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg hover:shadow-2xl transition-all duration-300 font-semibold"
                 >
                   View Plans & Register
                 <ArrowRight className="w-5 h-5 ml-2" />
