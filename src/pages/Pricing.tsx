@@ -7,7 +7,7 @@ import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden Fortune
 
 const Pricing = () => {
   return (
-    <div className="min-h-screen wine-theme bg-background">
+    <div className="min-h-screen bg-amber-50 bg-background">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16 md:h-20">
@@ -16,7 +16,7 @@ const Pricing = () => {
               <img src={logoGold} alt="FortuneX Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
-              Fortune<span className="text-gold">X</span>
+              <span className="text-gold">G</span>lamour
             </span>
           </Link>
           
@@ -41,12 +41,12 @@ const Pricing = () => {
           
           <h1 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4 animate-fade-up-delay-1">
             Choose Your{" "}
-            <span className="text-gradient-gold">Fortune Plan</span>
+            <span className="text-gradient-gold">Glamour</span>ous <span className="text-gradient-gold">Plan</span>
           </h1>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-up-delay-2">
             Select the perfect plan to start your earning journey. 
-            Upgrade anytime as your fortune grows!
+            Upgrade anytime as your wealth grows!
           </p>
         </div>
       </section>
@@ -84,11 +84,11 @@ const Pricing = () => {
         <div className="container">
           <div className="bg-card/50 rounded-2xl p-6 md:p-8 border border-border max-w-3xl mx-auto text-center">
             <h3 className="text-xl md:text-2xl font-display font-bold text-foreground mb-4">
-              100% Secure Payment
+              100% Secure Fast Payment
             </h3>
             <p className="text-muted-foreground mb-6">
-              Your payment is processed securely. After successful payment, 
-              you'll be connected with our admin team via WhatsApp to complete your registration.
+              Your payment is processed securely. After successful payment ~
+              You'll be connected with a team automatically via WhatsApp after your registration.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-2">
@@ -112,7 +112,7 @@ const Pricing = () => {
       <footer className="py-8 border-t border-border">
         <div className="container text-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} FortuneX. All rights reserved.
+            © {new Date().getFullYear()} Glamour. All rights reserved.
           </p>
         </div>
       </footer>
