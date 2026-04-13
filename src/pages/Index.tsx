@@ -5,10 +5,20 @@ import { CONFIG } from "@/config/fortunex";
 import { ArrowRight, Users, TrendingUp, Shield } from "lucide-react";
 import heroMockup from "@/assets/hero-mockup.png";
 import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden FortuneX logo
+import backgroundImg from "@/assets/hero-background.jpg"; // ← Your custom background image
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div 
+    className="min-h-screen"
+      style={{
+        backgroundImage: url(${backgroundImg}),
+        backgroundSize: "contain",      // or "contain" if you want the whole image visible
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed", // optional – makes it stay when scrolling
+        }}
+        >
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16 md:h-20">
@@ -22,11 +32,6 @@ const Index = () => {
           </Link>
           
           <div className="flex items-center gap-2 md:gap-4">
-            <Link to="/pricing">
-              <Button variant="ghost" size="sm" className="hidden md:inline-flex">
-                Pricing
-              </Button>
-            </Link>
             <Link to="/pricing">
               <Button variant="default" size="sm">
                 Get Started
