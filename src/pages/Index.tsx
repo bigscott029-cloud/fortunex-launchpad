@@ -12,8 +12,8 @@ const Index = () => {
     <div 
     className="min-h-screen"
       style={{
-        backgroundImage: 'url(${backgroundImg})',
-        backgroundSize: "contain",      // or "contain" if you want the whole image visible
+        backgroundImage: `url(${backgroundImg})`,
+        backgroundSize: "cover",      // or "contain" if you want the whole image visible
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed", // optional – makes it stay when scrolling
