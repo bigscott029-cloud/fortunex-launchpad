@@ -5,7 +5,7 @@ import { CONFIG } from "@/config/fortunex";
 import { ArrowRight, Users, TrendingUp, Shield } from "lucide-react";
 import heroMockup from "@/assets/hero-mockup.png";
 import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden FortuneX logo
-import backgroundImg from "@/assets/hero-background.jpg"; // ← Your custom background image
+import backgroundImg from "@/assets/hero-background.png"; // ← Your custom background image
 
 const Index = () => {
   return (
