@@ -12,13 +12,13 @@ const Index = () => {
     <div 
     className="min-h-screen"
       style={{
-        backgroundImage: url(${backgroundImg}),
+        backgroundImage: 'url(${backgroundImg})',
         backgroundSize: "contain",      // or "contain" if you want the whole image visible
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed", // optional – makes it stay when scrolling
         }}
-        >
+    >
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16 md:h-20">
