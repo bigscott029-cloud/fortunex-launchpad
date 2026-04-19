@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import PricingCard from "@/components/PricingCard";
-import { PLANS, CONFIG } from "@/config/fortunex";
+import { PLANS, CONFIG } from "@/config/glamour";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden FortuneX logo
+import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden Glamour logo
 
 const Pricing = () => {
   return (
@@ -13,7 +13,7 @@ const Pricing = () => {
         <div className="container flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center overflow-hidden">
-              <img src={logoGold} alt="FortuneX Logo" className="w-6 h-6 object-contain" />
+              <img src={logoGold} alt="Glamour Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
               <span className="text-gold">G</span>lamour

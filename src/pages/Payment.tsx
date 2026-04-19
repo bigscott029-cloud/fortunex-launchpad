@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { generateWhatsAppUrl, PLANS, CONFIG } from "@/config/fortunex";
+import { generateWhatsAppUrl, PLANS, CONFIG } from "@/config/glamour";
 import { Copy, Check, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import logoGold from "@/assets/logo-gold.png";
@@ -22,7 +22,7 @@ const PAYMENT_ACCOUNT = {
 
 const Payment = () => {
   const [searchParams] = useSearchParams();
-  const [planName, setPlanName] = useState("FortuneX Starter");
+  const [planName, setPlanName] = useState("Glamour Starter");
   const [planKey, setPlanKey] = useState("starter");
   const [amount, setAmount] = useState(7500);
   const [userName, setUserName] = useState("");
@@ -125,7 +125,7 @@ const Payment = () => {
         <div className="container flex items-center justify-center h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center overflow-hidden">
-              <img src={logoGold} alt="FortuneX Logo" className="w-6 h-6 object-contain" />
+              <img src={logoGold} alt="Glamour Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
               Fortune<span className="text-gold">X</span>
@@ -144,16 +144,16 @@ const Payment = () => {
               <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-1">
                 Payment Gateway
               </h1>
-              <p className="text-gold font-semibold">FortuneX Payment</p>
+              <p className="text-gold font-semibold">Glamour Payment</p>
               <p className="text-muted-foreground text-sm mt-2">
-                Complete the one-time payment fee to begin thriving on FortuneX
+                Complete the one-time payment fee to begin thriving on Glamour
               </p>
             </div>
 
             {/* Warning Note */}
             <div className="bg-gold/10 border border-gold/30 rounded-xl p-4 mb-6">
               <p className="text-center text-sm font-medium text-foreground">
-                <span className="text-gold font-bold">Note:</span> DO NOT PAY WITH OPAY AS OPAY IS NOT ACCEPTED ON FortuneX. YOU CAN USE ANY OTHER BANK.
+                <span className="text-gold font-bold">Note:</span> DO NOT PAY WITH OPAY AS OPAY IS NOT ACCEPTED ON Glamour. YOU CAN USE ANY OTHER BANK.
               </p>
             </div>
 
@@ -246,7 +246,7 @@ const Payment = () => {
               </a>
             </p>
             <p className="text-muted-foreground text-xs">
-              © 2025 FORTUNEX. All Rights Reserved.
+              © 2025 GLAMOUR. All Rights Reserved.
             </p>
           </div>
         </div>

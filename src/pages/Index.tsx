@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { VideoButton } from "@/components/VideoModal";
-import { CONFIG } from "@/config/fortunex";
+import { CONFIG } from "@/config/glamour";
 import { ArrowRight, Users, TrendingUp, Shield } from "lucide-react";
 import heroMockup from "@/assets/hero-mockup.png";
-import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden FortuneX logo
+import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden Glamour logo
 
 const Index = () => {
   return (
@@ -14,7 +14,7 @@ const Index = () => {
         <div className="container flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center overflow-hidden">
-              <img src={logoGold} alt="FortuneX Logo" className="w-6 h-6 object-contain" />
+              <img src={logoGold} alt="Glamour Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
               <span className="text-gold">G</span>lamour
@@ -80,7 +80,7 @@ const Index = () => {
               <div className="relative">
                 <img
                   src={heroMockup}
-                  alt="FortuneX App showing earnings dashboard"
+                  alt="Glamour App showing earnings dashboard"
                   className="w-full max-w-md lg:max-w-lg drop-shadow-2xl"
                 />
                 {/* Floating Stats Cards */}
@@ -149,7 +149,7 @@ const Index = () => {
               >
                 <div className="w-12 h-12 rounded-xl gradient-gold flex items-center justify-center mb-4 group-hover:scale-110 transition-transform overflow-hidden">
                   {feature.isCustomIcon ? (
-                    <img src={logoGold} alt="FortuneX Logo" className="w-10 h-10 object-contain" />
+                    <img src={logoGold} alt="Glamour Logo" className="w-10 h-10 object-contain" />
                   ) : (
                     <feature.icon className="w-6 h-6 text-foreground" />
                   )}

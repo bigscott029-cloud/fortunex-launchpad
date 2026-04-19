@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X, Play } from "lucide-react";
-import { CONFIG } from "@/config/fortunex";
+import { CONFIG } from "@/config/glamour";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -35,7 +35,7 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
             className="w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            title="FortuneX Demo Video"
+            title="Glamour Demo Video"
           />
         </div>
       </div>

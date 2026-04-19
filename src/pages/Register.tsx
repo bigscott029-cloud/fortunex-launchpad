@@ -3,7 +3,7 @@ import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PLANS } from "@/config/fortunex";
+import { PLANS } from "@/config/glamour";
 import { useToast } from "@/hooks/use-toast";
 import logoGold from "@/assets/logo-gold.png";
 import { Menu } from "lucide-react";
@@ -14,7 +14,7 @@ const Register = () => {
   const { toast } = useToast();
   
   const [planKey, setPlanKey] = useState("starter");
-  const [planName, setPlanName] = useState("FortuneX Starter");
+  const [planName, setPlanName] = useState("Glamour Starter");
   const [amount, setAmount] = useState(7500);
   
   const [formData, setFormData] = useState({
@@ -93,7 +93,7 @@ const Register = () => {
         <div className="container flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center overflow-hidden">
-              <img src={logoGold} alt="FortuneX Logo" className="w-6 h-6 object-contain" />
+              <img src={logoGold} alt="Glamour Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
               Fortune<span className="text-gold">X</span>
@@ -115,7 +115,7 @@ const Register = () => {
             <div className="text-center mb-6">
               <div className="flex justify-center mb-4">
                 <div className="w-12 h-12 rounded-lg gradient-gold flex items-center justify-center overflow-hidden">
-                  <img src={logoGold} alt="FortuneX Logo" className="w-8 h-8 object-contain" />
+                  <img src={logoGold} alt="Glamour Logo" className="w-8 h-8 object-contain" />
                 </div>
               </div>
               <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground">
@@ -125,7 +125,7 @@ const Register = () => {
                 Create Your <span className="text-gold">Account</span>
               </h2>
               <p className="text-muted-foreground text-sm mt-2">
-                Join the FortuneX community and start your journey.
+                Join the Glamour community and start your journey.
               </p>
             </div>
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { generateWhatsAppUrl, PLANS } from "@/config/fortunex";
+import { generateWhatsAppUrl, PLANS } from "@/config/glamour";
 import { XCircle, Sparkles, MessageCircle, RefreshCcw } from "lucide-react";
 
 const PaymentFailed = () => {
   const [searchParams] = useSearchParams();
-  const [planName, setPlanName] = useState("FortuneX");
+  const [planName, setPlanName] = useState("Glamour");
   const [reference, setReference] = useState("");
 
   useEffect(() => {

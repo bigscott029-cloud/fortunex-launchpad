@@ -1,4 +1,4 @@
-// Configuration for FortuneX
+// Configuration for Glamour
 // Edit these values to customize the platform
 
 import planStarterImage from "@/assets/plan-starter.jpg";
@@ -20,33 +20,33 @@ export const CONFIG = {
 
 export const PLANS = {
   starter: {
-    name: "FortuneX Starter",
+    name: "Glamour Starter",
     price: 7500,
     currency: "₦",
     image: planStarterImage,
     features: [
-      { label: "Fortune Connect", value: "₦6,000" },
+      { label: "Glamour Connect", value: "₦6,000" },
       { label: "ROI (Return of ADS)", value: "10%" },
       { label: "Indirect Connect 1", value: "₦200" },
       { label: "Indirect Connect 2", value: "₦100" },
-      { label: "Fortune Box", value: "₦500" },
-      { label: "Instant Fortune Claim", value: "₦5,000" },
+      { label: "Glamour Box", value: "₦500" },
+      { label: "Instant Glamour Claim", value: "₦5,000" },
       { label: "Casino Games", value: "$50" },
     ],
     popular: false,
   },
   plus: {
-    name: "FortuneX Plus",
+    name: "Glamour Plus",
     price: 14500,
     currency: "₦",
     image: planPlusImage,
     features: [
-      { label: "Fortune Connect", value: "₦12,500" },
+      { label: "Glamour Connect", value: "₦12,500" },
       { label: "ROI (Return of ADS)", value: "10%" },
       { label: "Indirect Connect 1", value: "₦400" },
       { label: "Indirect Connect 2", value: "₦100" },
-      { label: "Fortune Box", value: "₦500" },
-      { label: "Instant Fortune Claim", value: "₦12,000" },
+      { label: "Glamour Box", value: "₦500" },
+      { label: "Instant Glamour Claim", value: "₦12,000" },
       { label: "Casino Games", value: "$100" },
     ],
     popular: true,
