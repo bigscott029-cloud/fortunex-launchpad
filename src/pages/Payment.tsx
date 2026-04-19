@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { generateWhatsAppUrl, PLANS, CONFIG } from "@/config/glamour";
+import FlutterwaveButton from "@/components/FlutterwaveButton";
 import { Copy, Check, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import logoGold from "@/assets/logo-gold.png";
@@ -17,7 +18,7 @@ import {
 const PAYMENT_ACCOUNT = {
   accountNumber: "3002992678",
   bankName: "KUDA BANK",
-  accountName: "Skillnify Networks_FORTUNE X",
+  accountName: "Skillnify Networks_Glamour",
 };
 
 const Payment = () => {
@@ -26,6 +27,10 @@ const Payment = () => {
   const [planKey, setPlanKey] = useState("starter");
   const [amount, setAmount] = useState(7500);
   const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [country, setCountry] = useState("");
+  const [txRef, setTxRef] = useState("");
   const [timeLeft, setTimeLeft] = useState(600); // 10 minutes in seconds
   const [copied, setCopied] = useState(false);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
@@ -46,6 +51,23 @@ const Payment = () => {
     if (name) {
       setUserName(name);
     }
+
+    const usernameParam = searchParams.get("username");
+    if (usernameParam) {
+      setUsername(usernameParam);
+    }
+
+    const emailParam = searchParams.get("email");
+    if (emailParam) {
+      setEmail(emailParam);
+    }
+
+    const countryParam = searchParams.get("country");
+    if (countryParam) {
+      setCountry(countryParam);
+    }
+
+    setTxRef(`fort-${usernameParam || plan}-${Date.now()}`);
   }, [searchParams]);
 
   // Countdown timer
@@ -128,7 +150,7 @@ const Payment = () => {
               <img src={logoGold} alt="Glamour Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
-              Fortune<span className="text-gold">X</span>
+              <span className="text-gold">Glamour</span>
             </span>
           </Link>
         </div>
@@ -146,7 +168,7 @@ const Payment = () => {
               </h1>
               <p className="text-gold font-semibold">Glamour Payment</p>
               <p className="text-muted-foreground text-sm mt-2">
-                Complete the one-time payment fee to begin thriving on Glamour
+                Choose the secure payment method below to complete your plan purchase.
               </p>
             </div>
 
@@ -167,6 +189,23 @@ const Payment = () => {
                 <span className="text-muted-foreground">Amount to Pay:</span>
                 <span className="font-bold text-gold text-lg">₦{amount.toLocaleString()}</span>
               </div>
+              {country && (
+                <div className="flex justify-between items-center">
+                  <span className="text-muted-foreground">Country:</span>
+                  <span className="font-semibold text-foreground">{country}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Flutterwave Payment */}
+            <div className="mb-6">
+              <FlutterwaveButton
+                amount={amount}
+                email={email}
+                name={userName}
+                tx_ref={txRef}
+                planKey={planKey}
+              />
             </div>
 
             {/* Transfer Details */}

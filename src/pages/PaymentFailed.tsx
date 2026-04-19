@@ -33,7 +33,7 @@ const PaymentFailed = () => {
               <Sparkles className="w-5 h-5 text-foreground" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
-              Fortune<span className="text-gold">X</span>
+              <span className="text-gold">Glamour</span>
             </span>
           </Link>
         </div>

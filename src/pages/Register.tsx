@@ -22,6 +22,7 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
+    country: "",
   });
 
   useEffect(() => {
@@ -81,6 +82,7 @@ const Register = () => {
       name: formData.fullName,
       username: formData.username,
       email: formData.email,
+      country: formData.country,
     });
     
     navigate(`/payment?${params.toString()}`);
@@ -96,10 +98,9 @@ const Register = () => {
               <img src={logoGold} alt="Glamour Logo" className="w-6 h-6 object-contain" />
             </div>
             <span className="text-xl md:text-2xl font-display font-bold text-foreground">
-              Fortune<span className="text-gold">X</span>
+              <span className="text-gold">Glamour</span>
             </span>
           </Link>
-          
           <Button variant="ghost" size="icon" className="text-foreground">
             <Menu className="w-6 h-6" />
           </Button>
@@ -119,7 +120,7 @@ const Register = () => {
                 </div>
               </div>
               <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground">
-                Fortune<span className="text-gold">X</span>
+                <span className="text-gold">Glamour</span>
               </h1>
               <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mt-2">
                 Create Your <span className="text-gold">Account</span>
@@ -174,6 +175,22 @@ const Register = () => {
                   type="email"
                   placeholder="you@example.com"
                   value={formData.email}
+                  onChange={handleInputChange}
+                  className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
+                />
+              </div>
+
+              {/* Country */}
+              <div className="space-y-2">
+                <Label htmlFor="country" className="text-foreground font-semibold">
+                  Country
+                </Label>
+                <Input
+                  id="country"
+                  name="country"
+                  type="text"
+                  placeholder="Enter your country"
+                  value={formData.country}
                   onChange={handleInputChange}
                   className="bg-muted border-border text-foreground placeholder:text-muted-foreground"
                 />
