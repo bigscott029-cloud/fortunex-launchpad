@@ -3,6 +3,7 @@ import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { PLANS } from "@/config/glamour";
 import { useToast } from "@/hooks/use-toast";
 import logoGold from "@/assets/logo-gold.png";
@@ -89,7 +90,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen wine-theme bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Navigation */}
       <nav className="bg-background border-b border-border">
         <div className="container flex items-center justify-between h-16 md:h-20">
@@ -101,9 +102,12 @@ const Register = () => {
               <span className="text-gold">Glamour</span>
             </span>
           </Link>
-          <Button variant="ghost" size="icon" className="text-foreground">
-            <Menu className="w-6 h-6" />
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button variant="ghost" size="icon" className="text-foreground">
+              <Menu className="w-6 h-6" />
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -233,6 +237,15 @@ const Register = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-border">
+        <div className="container text-center">
+          <p className="text-muted-foreground text-sm">
+            © {new Date().getFullYear()} Glamour. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

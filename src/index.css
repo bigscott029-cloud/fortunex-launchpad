@@ -65,37 +65,37 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark, .wine-theme {
-    --background: 355 70% 18%;
+  .dark {
+    --background: 38 20% 8%;
     --foreground: 40 20% 96%;
 
-    --card: 355 65% 22%;
+    --card: 38 15% 12%;
     --card-foreground: 40 20% 96%;
 
-    --popover: 355 65% 22%;
+    --popover: 38 15% 12%;
     --popover-foreground: 40 20% 96%;
 
     --primary: 38 92% 50%;
-    --primary-foreground: 355 70% 12%;
+    --primary-foreground: 38 20% 8%;
 
-    --secondary: 355 55% 28%;
+    --secondary: 38 10% 15%;
     --secondary-foreground: 40 20% 96%;
 
-    --muted: 355 50% 25%;
+    --muted: 38 8% 18%;
     --muted-foreground: 40 15% 70%;
 
     --accent: 43 96% 56%;
-    --accent-foreground: 355 70% 12%;
+    --accent-foreground: 38 20% 8%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 355 45% 30%;
-    --input: 355 45% 30%;
+    --border: 38 12% 22%;
+    --input: 38 12% 22%;
     --ring: 38 92% 50%;
 
-    --shadow-card: 0 4px 20px -4px hsl(355, 70%, 8%, 0.4);
-    --shadow-card-hover: 0 16px 50px -10px hsl(355, 70%, 8%, 0.6);
+    --shadow-card: 0 4px 20px -4px hsl(38, 20%, 4%, 0.4);
+    --shadow-card-hover: 0 16px 50px -10px hsl(38, 20%, 4%, 0.6);
   }
 }
 

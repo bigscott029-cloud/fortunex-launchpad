@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { VideoButton } from "@/components/VideoModal";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { CONFIG } from "@/config/glamour";
 import { ArrowRight, Users, TrendingUp, Shield } from "lucide-react";
 import heroMockup from "@/assets/hero-mockup.png";
@@ -22,6 +23,7 @@ const Index = () => {
           </Link>
           
           <div className="flex items-center gap-2 md:gap-4">
+            <ThemeToggle />
             <Link to="/pricing">
               <Button variant="default" size="sm">
                 Get Started

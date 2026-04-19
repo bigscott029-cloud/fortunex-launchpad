@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Home, Sparkles } from "lucide-react";
 
 const NotFound = () => {
@@ -7,7 +8,8 @@ const NotFound = () => {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Navigation */}
       <nav className="bg-background border-b border-border">
-        <div className="container flex items-center justify-center h-16 md:h-20">
+        <div className="container flex items-center justify-between h-16 md:h-20">
+          <div className="flex-1"></div>
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-foreground" />
@@ -16,6 +18,9 @@ const NotFound = () => {
               <span className="text-gold">Glamour</span>
             </span>
           </Link>
+          <div className="flex-1 flex justify-end">
+            <ThemeToggle />
+          </div>
         </div>
       </nav>
 
@@ -46,6 +51,15 @@ const NotFound = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-border">
+        <div className="container text-center">
+          <p className="text-muted-foreground text-sm">
+            © {new Date().getFullYear()} Glamour. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

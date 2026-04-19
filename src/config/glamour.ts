@@ -9,7 +9,7 @@ export const CONFIG = {
   ADMIN_WHATSAPP: "2349134719121",
   
   // Demo video URL (YouTube embed or custom video)
-  DEMO_VIDEO_URL: " ",
+  DEMO_VIDEO_URL: "https://www.youtube.com/embed/8ILqJsM0B6E",
   
   // Payment gateway base URL
   PAYMENT_GATEWAY_URL: "/payment",
@@ -21,7 +21,7 @@ export const CONFIG = {
 export const PLANS = {
   starter: {
     name: "Glamour Starter",
-    price: 7500,
+    price: parseInt(import.meta.env.VITE_STARTER_PRICE || "7500"),
     currency: "₦",
     image: planStarterImage,
     features: [
@@ -37,7 +37,7 @@ export const PLANS = {
   },
   plus: {
     name: "Glamour Plus",
-    price: 14500,
+    price: parseInt(import.meta.env.VITE_PLUS_PRICE || "14500"),
     currency: "₦",
     image: planPlusImage,
     features: [
