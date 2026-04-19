@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { generateWhatsAppUrl, PLANS, CONFIG } from "@/config/glamour";
 import FlutterwaveButton from "@/components/FlutterwaveButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import logoGold from "@/assets/logo-gold.png";
 import {
   Dialog,
   DialogContent,
@@ -85,7 +86,8 @@ const Payment = () => {
 
       {/* Navigation */}
       <nav className="bg-background border-b border-border">
-        <div className="container flex items-center justify-center h-16 md:h-20">
+        <div className="container flex items-center justify-between h-16 md:h-20">
+          <div className="flex-1"></div>
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center overflow-hidden">
               <img src={logoGold} alt="Glamour Logo" className="w-6 h-6 object-contain" />
@@ -94,6 +96,9 @@ const Payment = () => {
               <span className="text-gold">Glamour</span>
             </span>
           </Link>
+          <div className="flex-1 flex justify-end">
+            <ThemeToggle />
+          </div>
         </div>
       </nav>
 
