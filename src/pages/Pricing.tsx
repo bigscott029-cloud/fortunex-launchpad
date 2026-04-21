@@ -73,6 +73,7 @@ const Pricing = () => {
               planKey="plus"
               name={PLANS.plus.name}
               price={PLANS.plus.price}
+              originalPrice={PLANS.plus.originalPrice}
               currency={PLANS.plus.currency}
               features={PLANS.plus.features}
               image={PLANS.plus.image}

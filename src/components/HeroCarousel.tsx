@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { HERO_IMAGES } from "@/assets/hero-mockup";
 
 interface HeroCarouselProps {
   className?: string;
@@ -9,18 +10,9 @@ export const HeroCarousel = ({ className = "" }: HeroCarouselProps) => {
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Import all images from the hero-mockup folder
+  // Load explicit hero images from barrel export
   useEffect(() => {
-    const heroImages = import.meta.glob<{ default: string }>(
-      "@/assets/hero-mockup/*.{jpg,jpeg,png,gif}",
-      { eager: true }
-    );
-    
-    const imageList = Object.values(heroImages)
-      .map((img) => img.default)
-      .sort();
-    
-    setImages(imageList);
+    setImages(HERO_IMAGES);
     setIsLoading(false);
   }, []);
 

@@ -55,7 +55,7 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
         </button>
         
         {/* Video Container */}
-        <div className="relative w-full bg-card" style={{ paddingBottom: "56.25%" }}>
+        <div className="relative w-full bg-card" style={{ paddingBottom: "177.778%" }}>
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-card">
               <Loader2 className="w-8 h-8 animate-spin text-gold" />

@@ -22,6 +22,7 @@ const PricingCard = ({
   planKey,
   name,
   price,
+  originalPrice,
   currency,
   features,
   image,
@@ -69,7 +70,12 @@ const PricingCard = ({
         </h3>
 
         {/* Price */}
-        <div className="flex items-baseline gap-1 mb-6">
+        <div className="flex items-baseline gap-2 mb-6 flex-wrap">
+          {originalPrice && (
+            <span className="text-lg md:text-xl text-muted-foreground line-through">
+              {currency}{originalPrice.toLocaleString()}
+            </span>
+          )}
           <span className="text-3xl md:text-4xl font-bold text-gold font-display">
             {currency}{price.toLocaleString()}
           </span>

@@ -42,8 +42,9 @@ export const PLANS = {
     popular: false,
   },
   plus: {
-    name: "Glamour Plus",
+    name: "GlamFee",
     price: parseInt(import.meta.env.VITE_PLUS_PRICE || "14000"),
+    originalPrice: import.meta.env.VITE_PLUS_ORIGINAL_PRICE ? parseInt(import.meta.env.VITE_PLUS_ORIGINAL_PRICE) : undefined,
     currency: "₦",
     image: planPlusImage,
     features: [
