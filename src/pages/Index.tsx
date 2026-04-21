@@ -79,8 +79,8 @@ const Index = () => {
             
             {/* Right Content - Hero Image */}
             <div className="relative flex justify-center lg:justify-end animate-float">
-              <div className="relative w-full max-w-md lg:max-w-lg">
-                <HeroCarousel className="w-full h-auto drop-shadow-2xl rounded-xl" />
+              <div className="relative w-full max-w-md lg:max-w-lg min-h-96">
+                <HeroCarousel className="w-full drop-shadow-2xl rounded-xl" />
                 {/* Floating Stats Cards */}
                 <div className="absolute -left-4 md:-left-8 top-1/4 bg-card rounded-xl p-3 shadow-card border border-border animate-fade-up">
                   <div className="flex items-center gap-2">

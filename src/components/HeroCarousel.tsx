@@ -9,6 +9,7 @@ export const HeroCarousel = ({ className = "" }: HeroCarouselProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageDimensions, setImageDimensions] = useState({ width: 300, height: 600 });
 
   // Load explicit hero images from barrel export
   useEffect(() => {
@@ -27,14 +28,30 @@ export const HeroCarousel = ({ className = "" }: HeroCarouselProps) => {
     return () => clearInterval(interval);
   }, [images.length]);
 
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    if (img.naturalWidth && img.naturalHeight) {
+      setImageDimensions({
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+      });
+    }
+  };
+
   if (isLoading || images.length === 0) {
     return (
-      <div className={`${className} bg-muted animate-pulse rounded-xl`} />
+      <div 
+        className={`${className} bg-muted animate-pulse rounded-xl`}
+        style={{ aspectRatio: `${imageDimensions.width} / ${imageDimensions.height}` }}
+      />
     );
   }
 
   return (
-    <div className={`${className} relative overflow-hidden rounded-xl`}>
+    <div 
+      className={`${className} relative overflow-hidden rounded-xl`}
+      style={{ aspectRatio: `${imageDimensions.width} / ${imageDimensions.height}` }}
+    >
       {/* Image Container */}
       <div className="relative w-full h-full">
         {images.map((image, index) => (
@@ -42,6 +59,7 @@ export const HeroCarousel = ({ className = "" }: HeroCarouselProps) => {
             key={index}
             src={image}
             alt={`Hero carousel slide ${index + 1}`}
+            onLoad={handleImageLoad}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
               index === currentImageIndex ? "opacity-100" : "opacity-0"
             }`}
