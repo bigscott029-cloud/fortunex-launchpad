@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { generateWhatsAppUrl, PLANS } from "@/config/glamour";
+import { generateWhatsAppUrl, PLANS, CONFIG } from "@/config/glamour";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { CheckCircle2, Sparkles, MessageCircle, XCircle } from "lucide-react";
 
@@ -44,8 +44,9 @@ const PaymentSuccess = () => {
       });
   }, [searchParams]);
 
-  const whatsappMessage = `Hello Admin, I've successfully paid for ${planName}. My payment reference is ${reference}.`;
+  const whatsappMessage = CONFIG.WHATSAPP_MESSAGE;
   const whatsappUrl = generateWhatsAppUrl(whatsappMessage);
+  const whatsappGroupLink = CONFIG.WHATSAPP_GROUP_LINK;
 
   if (status === "verifying") {
     return (
@@ -172,15 +173,15 @@ const PaymentSuccess = () => {
 
           {/* WhatsApp CTA */}
           <div className="space-y-4 animate-fade-up-delay-1">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <a href={whatsappGroupLink} target="_blank" rel="noopener noreferrer">
               <Button variant="gold" size="xl" className="w-full">
                 <MessageCircle className="w-5 h-5" />
-                Continue on WhatsApp
+                Join WhatsApp Group
               </Button>
             </a>
             
             <p className="text-sm text-muted-foreground">
-              Click the button above to complete your registration with our admin team
+              Click the button above to join our exclusive WhatsApp group and get started!
             </p>
           </div>
 

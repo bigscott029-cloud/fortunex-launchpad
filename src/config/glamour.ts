@@ -6,7 +6,13 @@ import planPlusImage from "@/assets/plan-plus.jpg";
 
 export const CONFIG = {
   // Admin WhatsApp number (include country code without +)
-  ADMIN_WHATSAPP: "2349134719121",
+  ADMIN_WHATSAPP: "2349123850317",
+  
+  // WhatsApp message for contact (editable via .env)
+  WHATSAPP_MESSAGE: import.meta.env.VITE_WHATSAPP_MESSAGE || "Hello Admin, I've successfully paid for my plan. Please add me to the group!",
+  
+  // WhatsApp group link after successful payment (editable via .env)
+  WHATSAPP_GROUP_LINK: import.meta.env.VITE_WHATSAPP_GROUP_LINK || "https://chat.whatsapp.com/your-group-invite-link",
   
   // Demo video URL (YouTube embed or custom video)
   DEMO_VIDEO_URL: "https://www.youtube.com/embed/8ILqJsM0B6E",
@@ -15,7 +21,7 @@ export const CONFIG = {
   PAYMENT_GATEWAY_URL: "/payment",
   
   // Platform stats
-  MEMBER_COUNT: "50,000+",
+  MEMBER_COUNT: "150,000+",
 };
 
 export const PLANS = {
@@ -37,17 +43,17 @@ export const PLANS = {
   },
   plus: {
     name: "Glamour Plus",
-    price: parseInt(import.meta.env.VITE_PLUS_PRICE || "14500"),
+    price: parseInt(import.meta.env.VITE_PLUS_PRICE || "14000"),
     currency: "₦",
     image: planPlusImage,
     features: [
-      { label: "Glamour Connect", value: "₦12,500" },
-      { label: "ROI (Return of ADS)", value: "10%" },
+      { label: "Glam Link Bonus", value: "₦12,500 (€6)" },
+      { label: "GlamLifestyle", value: "€2 per hour" },
       { label: "Indirect Connect 1", value: "₦400" },
       { label: "Indirect Connect 2", value: "₦100" },
-      { label: "Glamour Box", value: "₦500" },
-      { label: "Instant Glamour Claim", value: "₦12,000" },
-      { label: "Casino Games", value: "$100" },
+      { label: "Glam Reward", value: "₦10,000 (€5)" },
+      { label: "GlamFaceTime", value: "€2 per hour" },
+      { label: "GlamGains", value: "€12" },
     ],
     popular: true,
   },

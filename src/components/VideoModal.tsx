@@ -55,7 +55,7 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
         </button>
         
         {/* Video Container */}
-        <div className="aspect-video relative">
+        <div className="relative w-full bg-card" style={{ paddingBottom: "56.25%" }}>
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-card">
               <Loader2 className="w-8 h-8 animate-spin text-gold" />
@@ -68,17 +68,17 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
               src={glamourVideo}
               controls
               autoPlay
-              className="w-full h-full"
+              className="absolute inset-0 w-full h-full object-contain"
               onError={handleVideoError}
               onLoadedData={handleVideoLoad}
-              poster="/og-image.png" // Optional poster image
+              poster="/og-image.png"
             >
               Your browser does not support the video tag.
             </video>
           ) : (
             <iframe
               src={`${CONFIG.DEMO_VIDEO_URL}?autoplay=1&rel=0`}
-              className="w-full h-full"
+              className="absolute inset-0 w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               title="Glamour Demo Video"

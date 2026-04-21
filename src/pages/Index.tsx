@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { VideoButton } from "@/components/VideoModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { CONFIG } from "@/config/glamour";
 import { ArrowRight, Users, TrendingUp, Shield } from "lucide-react";
-import heroMockup from "@/assets/hero-mockup.png";
 import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden Glamour logo
 
 const Index = () => {
@@ -79,12 +79,8 @@ const Index = () => {
             
             {/* Right Content - Hero Image */}
             <div className="relative flex justify-center lg:justify-end animate-float">
-              <div className="relative">
-                <img
-                  src={heroMockup}
-                  alt="Glamour App showing earnings dashboard"
-                  className="w-full max-w-md lg:max-w-lg drop-shadow-2xl"
-                />
+              <div className="relative w-full max-w-md lg:max-w-lg">
+                <HeroCarousel className="w-full h-auto drop-shadow-2xl rounded-xl" />
                 {/* Floating Stats Cards */}
                 <div className="absolute -left-4 md:-left-8 top-1/4 bg-card rounded-xl p-3 shadow-card border border-border animate-fade-up">
                   <div className="flex items-center gap-2">
