@@ -44,13 +44,12 @@ const Pricing = () => {
           </div>
           
           <h1 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4 animate-fade-up-delay-1">
-            Choose Your{" "}
+            Get Started With A{" "}
             <span className="text-gradient-gold">Glamour</span>ous <span className="text-gradient-gold">Plan</span>
           </h1>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-up-delay-2">
-            Select the perfect plan to start your earning journey. 
-            Upgrade anytime as your wealth grows!
+            Grab your GlamSlot and Grow your wealth!
           </p>
         </div>
       </section>
@@ -59,7 +58,8 @@ const Pricing = () => {
       <section className="py-8 md:py-16">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-            <PricingCard
+            {/* Starter Plan */}
+            {/* <PricingCard
               planKey="starter"
               name={PLANS.starter.name}
               price={PLANS.starter.price}
@@ -68,7 +68,7 @@ const Pricing = () => {
               image={PLANS.starter.image}
               popular={PLANS.starter.popular}
               index={0}
-            />
+            /> */}
             <PricingCard
               planKey="plus"
               name={PLANS.plus.name}

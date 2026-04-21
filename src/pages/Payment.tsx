@@ -110,7 +110,7 @@ const Payment = () => {
             {/* Header */}
             <div className="text-center mb-6">
               <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-1">
-                Payment Gateway
+                SECUREFLOW TECH HUB PAYMENT GATEWAY
               </h1>
               <p className="text-gold font-semibold">Glamour Payment</p>
               <p className="text-muted-foreground text-sm mt-2">
@@ -121,7 +121,7 @@ const Payment = () => {
             {/* Warning Note */}
             <div className="bg-gold/10 border border-gold/30 rounded-xl p-4 mb-6">
               <p className="text-center text-sm font-medium text-foreground">
-                <span className="text-gold font-bold">Note:</span> DO NOT MAKE PAYMENT TO ANYONE EXCEPT THROUGH THE PAYMENT GATEWAY, IF YOU ENCOUNTER ANY PROBLEMS, CONTACT YOUR COACH IMMEDIATELY!
+                <span className="text-gold font-bold">Note:</span> YOU ARE MAKING PAYMENT FOR GLAMOUR THROUGH "SECUREFLOW TECH HUB" PAYMENT GATEWAY FOR FAST AND SECURE PAYMENT, IF YOU ENCOUNTER ANY PROBLEMS, CONTACT YOUR COACH IMMEDIATELY!
               </p>
             </div>
 
