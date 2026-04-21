@@ -165,9 +165,15 @@ const Payment = () => {
           {/* Footer */}
           <div className="text-center mt-6 space-y-2">
             <p className="text-muted-foreground text-sm">
-              Join our channel{" "}
+              NEED HELP?{" "}
+              <a href={import.meta.env.VITE_WHATSAPP_HELP_LINK || "#"} className="text-gold hover:underline">
+                Message Admin on WhatsApp
+              </a>
+            </p>
+            <p className="text-muted-foreground text-sm">
+              Join Our Channel For More Updates{" "}
               <a href={import.meta.env.VITE_CHANNEL_LINK || "#"} className="text-gold hover:underline">
-                CLICK HERE
+                Join Channel
               </a>
             </p>
             <p className="text-muted-foreground text-xs">
