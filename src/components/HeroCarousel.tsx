@@ -11,9 +11,11 @@ export const HeroCarousel = ({ className = "" }: HeroCarouselProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [imageDimensions, setImageDimensions] = useState({ width: 300, height: 600 });
 
-  // Load explicit hero images from barrel export
+  // Load explicit hero images from barrel export and randomize order
   useEffect(() => {
-    setImages(HERO_IMAGES);
+    // Shuffle the images array to randomize display order
+    const shuffledImages = [...HERO_IMAGES].sort(() => Math.random() - 0.5);
+    setImages(shuffledImages);
     setIsLoading(false);
   }, []);
 

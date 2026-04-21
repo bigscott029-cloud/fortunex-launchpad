@@ -38,7 +38,7 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/80 backdrop-blur-sm animate-fade-up"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-foreground/80 backdrop-blur-sm animate-fade-up"
       onClick={onClose}
     >
       <div 

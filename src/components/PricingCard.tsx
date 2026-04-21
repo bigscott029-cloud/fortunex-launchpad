@@ -11,6 +11,7 @@ interface PricingCardProps {
   planKey: string;
   name: string;
   price: number;
+  originalPrice?: number;
   currency: string;
   features: PricingFeature[];
   image?: string;
