@@ -12,14 +12,13 @@ const PaymentSuccess = () => {
   const [status, setStatus] = useState("verifying");
 
   useEffect(() => {
-    const plan = searchParams.get("plan") || "starter";
-    const ref = searchParams.get("tx_ref") || searchParams.get("ref") || `FX${Date.now()}`;
+    const requestedPlan = searchParams.get("plan") || "starter";
+    const safePlan = requestedPlan in PLANS ? requestedPlan : "starter";
+    const ref = searchParams.get("tx_ref") || searchParams.get("ref") || "";
     
-    const planData = PLANS[plan as keyof typeof PLANS];
-    if (planData) {
-      setPlanName(planData.name);
-    }
-    setReference(ref);
+    const planData = PLANS[safePlan as keyof typeof PLANS];
+    setPlanName(planData.name);
+    setReference(ref || "Not provided");
 
     if (!ref) {
       setStatus("not-detected");

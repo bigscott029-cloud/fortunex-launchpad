@@ -17,7 +17,7 @@ const Payment = () => {
   const [searchParams] = useSearchParams();
   const [planName, setPlanName] = useState("Glamour Starter");
   const [planKey, setPlanKey] = useState("starter");
-  const [amount, setAmount] = useState(7500);
+  const [amount, setAmount] = useState(PLANS.starter.price);
   const [userName, setUserName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -26,14 +26,13 @@ const Payment = () => {
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
 
   useEffect(() => {
-    const plan = searchParams.get("plan") || "starter";
-    setPlanKey(plan);
-    
-    const planData = PLANS[plan as keyof typeof PLANS];
-    if (planData) {
-      setPlanName(planData.name);
-      setAmount(planData.price);
-    }
+    const requestedPlan = searchParams.get("plan") || "starter";
+    const safePlan = requestedPlan in PLANS ? requestedPlan : "starter";
+    const planData = PLANS[safePlan as keyof typeof PLANS];
+
+    setPlanKey(safePlan);
+    setPlanName(planData.name);
+    setAmount(planData.price);
     
     // Get user name from params
     const name = searchParams.get("name");
@@ -56,7 +55,7 @@ const Payment = () => {
       setCountry(countryParam);
     }
 
-    setTxRef(`fort-${usernameParam || plan}-${Date.now()}`);
+    setTxRef(`fort-${usernameParam || safePlan}-${Date.now()}`);
   }, [searchParams]);
 
   return (

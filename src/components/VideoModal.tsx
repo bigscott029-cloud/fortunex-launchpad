@@ -1,12 +1,21 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Play, Loader2 } from "lucide-react";
 import { CONFIG } from "@/config/glamour";
-import glamourVideo from "@/assets/GLAMOUR - FULL EXPLANATION ON HOW GLAMOUR WORKS.mp4";
+import glamourVideo1 from "@/assets/GLAMOUR - FULL EXPLANATION ON HOW GLAMOUR WORKS-1.mp4";
+import glamourVideo2 from "@/assets/GLAMOUR - FULL EXPLANATION ON HOW GLAMOUR WORKS-2.mp4";
 
-interface VideoModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+const demoVideos = [
+  {
+    title: "Glamour Guide 1",
+    description: "Start here for the main earning breakdown.",
+    src: glamourVideo1,
+  },
+  {
+    title: "Glamour Guide 2",
+    description: "Continue with the second explanation video.",
+    src: glamourVideo2,
+  },
+];
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -16,14 +25,37 @@ interface VideoModalProps {
 const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
   const [videoError, setVideoError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const activeVideo = demoVideos[activeVideoIndex];
 
   useEffect(() => {
     if (isOpen) {
       setVideoError(false);
       setIsLoading(true);
+      setActiveVideoIndex(0);
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen || videoError || demoVideos.length < 2) return;
+
+    const interval = window.setInterval(() => {
+      setActiveVideoIndex((current) => (current + 1) % demoVideos.length);
+    }, 60000);
+
+    return () => window.clearInterval(interval);
+  }, [isOpen, videoError]);
+
+  useEffect(() => {
+    if (!isOpen || videoError) return;
+
+    setIsLoading(true);
+    videoRef.current?.load();
+    videoRef.current?.play().catch(() => {
+      setIsLoading(false);
+    });
+  }, [activeVideoIndex, isOpen, videoError]);
 
   const handleVideoError = () => {
     setVideoError(true);
@@ -34,6 +66,11 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
     setIsLoading(false);
   };
 
+  const selectVideo = (index: number) => {
+    setActiveVideoIndex(index);
+    setVideoError(false);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -41,8 +78,8 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
       className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-foreground/80 backdrop-blur-sm animate-fade-up"
       onClick={onClose}
     >
-      <div 
-        className="relative w-full max-w-4xl bg-card rounded-2xl overflow-hidden shadow-2xl"
+      <div
+        className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-card shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -64,13 +101,15 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
           
           {!videoError ? (
             <video
+              key={activeVideo.src}
               ref={videoRef}
-              src={glamourVideo}
+              src={activeVideo.src}
               controls
               autoPlay
               className="absolute inset-0 w-full h-full object-contain"
               onError={handleVideoError}
               onLoadedData={handleVideoLoad}
+              onEnded={() => setActiveVideoIndex((current) => (current + 1) % demoVideos.length)}
               poster="/og-image.png"
             >
               Your browser does not support the video tag.
@@ -86,14 +125,33 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
             />
           )}
         </div>
+
+        {!videoError && (
+          <div className="grid gap-3 border-t border-border bg-background/95 p-4 sm:grid-cols-2">
+            {demoVideos.map((video, index) => (
+              <button
+                key={video.title}
+                type="button"
+                onClick={() => selectVideo(index)}
+                className={`rounded-xl border p-4 text-left transition-colors ${
+                  index === activeVideoIndex
+                    ? "border-gold bg-gold/10 text-foreground"
+                    : "border-border bg-card text-muted-foreground hover:border-gold/50 hover:text-foreground"
+                }`}
+              >
+                <span className="mb-2 flex items-center gap-2 text-sm font-bold">
+                  <Play className="h-4 w-4 text-gold" />
+                  {video.title}
+                </span>
+                <span className="block text-xs leading-5">{video.description}</span>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 };
-
-interface VideoButtonProps {
-  className?: string;
-}
 
 interface VideoButtonProps {
   className?: string;

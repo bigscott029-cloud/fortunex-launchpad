@@ -16,7 +16,7 @@ const Register = () => {
   
   const [planKey, setPlanKey] = useState("starter");
   const [planName, setPlanName] = useState("Glamour Starter");
-  const [amount, setAmount] = useState(7500);
+  const [amount, setAmount] = useState(PLANS.starter.price);
   
   const [formData, setFormData] = useState({
     fullName: "",
@@ -27,14 +27,13 @@ const Register = () => {
   });
 
   useEffect(() => {
-    const plan = searchParams.get("plan") || "starter";
-    setPlanKey(plan);
-    
-    const planData = PLANS[plan as keyof typeof PLANS];
-    if (planData) {
-      setPlanName(planData.name);
-      setAmount(planData.price);
-    }
+    const requestedPlan = searchParams.get("plan") || "starter";
+    const safePlan = requestedPlan in PLANS ? requestedPlan : "starter";
+    const planData = PLANS[safePlan as keyof typeof PLANS];
+
+    setPlanKey(safePlan);
+    setPlanName(planData.name);
+    setAmount(planData.price);
   }, [searchParams]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

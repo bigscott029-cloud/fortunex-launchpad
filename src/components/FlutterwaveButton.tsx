@@ -6,7 +6,13 @@ interface FlutterwaveButtonProps {
   name: string;
   tx_ref?: string;
   planKey?: string;
-  onSuccess?: (response: any) => void;
+  onSuccess?: (response: FlutterwaveResponse) => void;
+}
+
+interface FlutterwaveResponse {
+  tx_ref?: string;
+  transaction_id?: number;
+  status?: string;
 }
 
 const FlutterwaveButton = ({
@@ -18,7 +24,8 @@ const FlutterwaveButton = ({
   onSuccess,
 }: FlutterwaveButtonProps) => {
   const paymentReference = tx_ref || `glamour-${Date.now()}`;
-  const successUrl = import.meta.env.VITE_FLW_SUCCESS_URL || `${window.location.origin}/success`;
+  const configuredSuccessUrl = import.meta.env.VITE_FLW_SUCCESS_URL || "/success";
+  const successUrl = new URL(configuredSuccessUrl, window.location.origin).toString();
   const redirectUrl = `${successUrl}?tx_ref=${paymentReference}${planKey ? `&plan=${planKey}` : ""}`;
 
   const config = {
@@ -47,13 +54,13 @@ const FlutterwaveButton = ({
       type="button"
       onClick={() => {
         handleFlutterPayment({
-          callback: (response: any) => {
+          callback: (response: FlutterwaveResponse) => {
             console.log("Payment response:", response);
             if (onSuccess) {
               onSuccess(response);
             }
             closePaymentModal();
-            window.location.href = `${successUrl}?tx_ref=${response.tx_ref}${planKey ? `&plan=${planKey}` : ""}`;
+            window.location.href = `${successUrl}?tx_ref=${response.tx_ref || paymentReference}${planKey ? `&plan=${planKey}` : ""}`;
           },
           onClose: () => console.log("Payment modal closed"),
         });

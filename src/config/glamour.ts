@@ -6,7 +6,7 @@ import planPlusImage from "@/assets/plan-plus.jpg";
 
 export const CONFIG = {
   // Admin WhatsApp number (include country code without +)
-  ADMIN_WHATSAPP: "2349123850317",
+  ADMIN_WHATSAPP: import.meta.env.VITE_ADMIN_WHATSAPP || "2349123850317",
   
   // WhatsApp message for contact (editable via .env)
   WHATSAPP_MESSAGE: import.meta.env.VITE_WHATSAPP_MESSAGE || "Hello Admin, I've successfully paid for my plan. Please add me to the group!",
@@ -22,39 +22,48 @@ export const CONFIG = {
   
   // Platform stats
   MEMBER_COUNT: "150,000+",
+
+  // Fixed promo deadline. Override this on deployment with VITE_PROMO_ENDS_AT if needed.
+  PROMO_ENDS_AT: import.meta.env.VITE_PROMO_ENDS_AT || "2026-06-28T11:26:06-05:00",
 };
 
 export const PLANS = {
   starter: {
     name: "Glamour Starter",
-    price: parseInt(import.meta.env.VITE_STARTER_PRICE || "7500"),
+    price: parseInt(import.meta.env.VITE_STARTER_PRICE || "14000"),
     currency: "₦",
     image: planStarterImage,
     features: [
-      { label: "Glamour Connect", value: "₦6,000" },
-      { label: "ROI (Return of ADS)", value: "10%" },
-      { label: "Indirect Connect 1", value: "₦200" },
+      { label: "Glam Link Bonus", value: "₦12,500 (€6)" },
+      { label: "GlamLifestyle", value: "€2/hour" },
+      { label: "Indirect Connect 1", value: "₦400" },
       { label: "Indirect Connect 2", value: "₦100" },
-      { label: "Glamour Box", value: "₦500" },
-      { label: "Instant Glamour Claim", value: "₦5,000" },
-      { label: "Casino Games", value: "$50" },
+      { label: "Glam Reward", value: "₦10,000 (€5)" },
+      { label: "GlamFaceTime", value: "€2/hour" },
+      { label: "GlamGains", value: "€12" },
     ],
     popular: false,
   },
   plus: {
-    name: "GlamFee",
-    price: parseInt(import.meta.env.VITE_PLUS_PRICE || "14000"),
-    originalPrice: import.meta.env.VITE_PLUS_ORIGINAL_PRICE ? parseInt(import.meta.env.VITE_PLUS_ORIGINAL_PRICE) : undefined,
+    name: "Glamour Plus",
+    price: parseInt(import.meta.env.VITE_PLUS_PRICE || "20000"),
+    originalPrice: parseInt(import.meta.env.VITE_PLUS_ORIGINAL_PRICE || "35000"),
     currency: "₦",
     image: planPlusImage,
     features: [
-      { label: "Glam Link Bonus", value: "₦12,500 (€6)" },
-      { label: "GlamLifestyle", value: "€2 per hour" },
-      { label: "Indirect Connect 1", value: "₦400" },
-      { label: "Indirect Connect 2", value: "₦100" },
-      { label: "Glam Reward", value: "₦10,000 (€5)" },
-      { label: "GlamFaceTime", value: "€2 per hour" },
-      { label: "GlamGains", value: "€12" },
+      { label: "Glam Fee", value: "₦20,000 (€10)" },
+      { label: "Glam Link Bonus", value: "₦16,000 (€8)" },
+      { label: "Glam Reward", value: "₦20,000 (€10)" },
+      { label: "1st Indirect", value: "₦800" },
+      { label: "2nd Indirect", value: "₦400" },
+      { label: "GlamLifestyle", value: "€7/hour" },
+      { label: "GlamScript2Cash", value: "€8/script" },
+      { label: "GlamRealtime", value: "€7/hour" },
+      { label: "GlamLingua", value: "€7/hour" },
+      { label: "GlamFaceTime", value: "€10/hour" },
+      { label: "GlamWorks", value: "€8/hour" },
+      { label: "GlamDarkMode", value: "€12/hour" },
+      { label: "Total Potential", value: "€25/hour" },
     ],
     popular: true,
   },

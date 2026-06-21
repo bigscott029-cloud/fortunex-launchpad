@@ -4,7 +4,16 @@ import { VideoButton } from "@/components/VideoModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { CONFIG } from "@/config/glamour";
-import { ArrowRight, Users, TrendingUp, Shield } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock3,
+  CreditCard,
+  Shield,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
 import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden Glamour logo
 
 const Index = () => {
@@ -54,14 +63,13 @@ const Index = () => {
               
               {/* Headline */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-6 animate-fade-up-delay-1">
-                Turn Your Time Into{" "}
-                <span className="text-gradient-gold">Unlimited Income</span>
+                Start Your Glam Journey With{" "}
+                <span className="text-gradient-gold">Daily Earning Streams</span>
               </h1>
               
               {/* Subtext */}
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 animate-fade-up-delay-2">
-                Join thousands of Africans earning daily rewards through simple tasks, 
-                engaging content, and exciting games. No experience needed!
+                Join the Glamour community, watch the earning guide, choose your package, and connect with the team after secure payment.
               </p>
               
               {/* CTA Buttons */}
@@ -88,8 +96,8 @@ const Index = () => {
                       <TrendingUp className="w-4 h-4 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Daily ROI</p>
-                      <p className="font-bold text-foreground">+10%</p>
+                      <p className="text-xs text-muted-foreground">Plus Potential</p>
+                      <p className="font-bold text-foreground">€25/hr</p>
                     </div>
                   </div>
                 </div>
@@ -100,8 +108,8 @@ const Index = () => {
                       <Shield className="w-4 h-4 text-green-500" />
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Verified</p>
-                      <p className="font-bold text-foreground">100% Safe</p>
+                      <p className="text-xs text-muted-foreground">Checkout</p>
+                      <p className="font-bold text-foreground">Secure</p>
                     </div>
                   </div>
                 </div>
@@ -111,34 +119,59 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Momentum Section */}
+      <section className="py-12 md:py-16">
+        <div className="container">
+          <div className="grid gap-4 md:grid-cols-4">
+            {[
+              { icon: Zap, label: "Instant boost", value: "₦16,000 link bonus" },
+              { icon: TrendingUp, label: "Daily streams", value: "Up to €25/hour" },
+              { icon: CreditCard, label: "Secure payment", value: "Flutterwave checkout" },
+              { icon: Clock3, label: "Promo window", value: "Limited GlamSlots" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-2xl border border-border bg-card p-5 text-center shadow-card"
+              >
+                <item.icon className="mx-auto mb-3 h-6 w-6 text-gold" />
+                <p className="text-sm font-semibold text-muted-foreground">{item.label}</p>
+                <p className="mt-1 font-display text-xl font-bold text-foreground">
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-16 md:py-24 bg-secondary/50">
         <div className="container">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Why Choose <span className="text-gradient-gold">GLAMOUR</span>?
+              Why Choose <span className="text-gradient-gold">GLAMOUR</span> Plus?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Start your earning journey with the most trusted platform in Africa!
+              The higher package gives users a stronger reason to act now while Starter remains available as a lighter entry.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
-                title: "Simple Tasks",
-                description: "Complete easy daily tasks and watch your earnings grow automatically",
+                title: "Full Earning Access",
+                description: "Unlock more Glamour channels including lifestyle, scripts, realtime, lingua, facetime, works, and dark mode.",
                 isCustomIcon: true, // Flag for our custom logo
               },
               {
                 icon: TrendingUp,
-                title: "High Returns",
-                description: "Enjoy up to 10% ROI on your activities with transparent payouts",
+                title: "Stronger Rewards",
+                description: "Plus raises the Glam Reward, Glam Link Bonus, and indirect earning values compared with Starter.",
               },
               {
                 icon: Shield,
-                title: "Secure Platform",
-                description: "Your funds and data are protected with bank-grade security",
+                title: "Official Flow",
+                description: "Register, pay through the secure gateway, and get connected through WhatsApp for onboarding.",
               },
             ].map((feature, index) => (
               <div
@@ -162,6 +195,50 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Video Hook Section */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-8 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-[0.18em] text-gold">
+                Watch First
+              </p>
+              <h2 className="mt-2 text-3xl md:text-4xl font-display font-bold text-foreground">
+                Let the guide sell the next click
+              </h2>
+              <p className="mt-4 text-muted-foreground leading-7">
+                The first demo video now opens with your new uploaded guide, giving visitors a fast explanation before they choose their package.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <VideoButton className="rounded-xl border border-gold/30 bg-gold/10 px-5" />
+                <Link to="/pricing">
+                  <Button variant="gold" size="lg" className="w-full sm:w-auto">
+                    Compare Packages
+                    <ArrowRight className="w-5 h-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-3">
+              {[
+                "Watch the Glamour earning guide",
+                "Choose Plus for the fuller earning structure",
+                "Pay securely and connect with the team",
+              ].map((step) => (
+                <div
+                  key={step}
+                  className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-card"
+                >
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-gold" />
+                  <span className="font-semibold text-foreground">{step}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 md:py-24">
         <div className="container">
@@ -169,17 +246,17 @@ const Index = () => {
             <div className="absolute inset-0 bg-foreground/5" />
             <div className="relative">
               <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-                Ready to Start Earning?
+                Ready to Secure Your GlamSlot?
               </h2>
               <p className="text-foreground/80 max-w-xl mx-auto mb-8">
-                Join over {CONFIG.MEMBER_COUNT} members who are already earning daily with Glamour!
+                Plus is positioned for faster momentum, stronger rewards, and multiple earning channels.
               </p>
               <Link to="/pricing">
                 <Button 
                   size="xl"
                   className="bg-emerald-500 hover:bg-emerald-600 text-white shadow-lg hover:shadow-2xl transition-all duration-300 font-semibold"
                 >
-                  View Plans & Register
+                  View Plus Package
                 <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
