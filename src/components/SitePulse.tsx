@@ -16,50 +16,30 @@ import {
   Award,
   DollarSign,
   Star,
+  User,
 } from "lucide-react";
 
 const pulseItems = [
   {
     icon: Flame,
     title: "Limited GlamSlots",
-    message: "Plus promo access is active at ₦20,000 while the countdown runs.",
-  },
-  {
-    icon: PlayCircle,
-    title: "Watch First",
-    message: "The Glamour guide videos are ready before package selection.",
+    message: "Plus promo access is active at ₦20,000! Hurry before it runs out.",
   },
   {
     icon: CreditCard,
     title: "Secure Checkout",
-    message: "Payments continue through the Flutterwave powered gateway.",
+    message: "Pay through verified gateways, no hassle.",
   },
-  {
-    icon: BadgeCheck,
-    title: "Package Proof",
-    message: "Member proof, payment proof, and coach video are available on pricing.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Team Onboarding",
-    message: "Successful registration connects users to WhatsApp onboarding.",
-  },
-  {
-    icon: Clock3,
-    title: "Fixed Promo Timer",
-    message: "The offer countdown keeps moving when visitors come back.",
-  },
-
-  // === Pricing & Offer Items ===
+    // === Pricing & Offer Items ===
   {
     icon: Tag,
     title: "Special Promo",
-    message: "Register now at ₦20,000 (limited time) before it returns to ₦35,000.",
+    message: "Register now at ₦20,000 (limited time) before it returns to ₦35,000 and goes up again.",
   },
   {
     icon: Package,
     title: "Two Powerful Packages",
-    message: "Choose between ₦14,000 and ₦20,000 packages — both include Full time withdrawal access.",
+    message: "Choose between ₦14,000 and ₦20,000 packages — both have Full time withdrawal access.",
   },
   {
     icon: TrendingUp,
@@ -71,7 +51,7 @@ const pulseItems = [
   {
     icon: UserCheck,
     title: "Aisha M.",
-    message: "I withdrew ₦185,000 in my first 3 weeks after joining the ₦20k promo. Highly recommended!",
+    message: "I withdrew ₦185,000 within my first 3 days after joining the ₦20k promo. Highly recommended!",
   },
   {
     icon: Award,
@@ -81,42 +61,42 @@ const pulseItems = [
   {
     icon: Users,
     title: "Multiple Successes",
-    message: "Over 30 people have registered in the last 7 days. Many are already cashing out.",
+    message: "Over 3,800+ people have registered in the last 7 days and still counting! Many are already cashing out, don't miss out.",
   },
   {
     icon: DollarSign,
     title: "Blessing A.",
-    message: "Started with the ₦20,000 promo and made back my money in 4 days. Thank you Glamour!",
+    message: "Started with the ₦20,000 promo and made back times 3 of my money in 4 days. Thank you Glamour! God bless you pe",
   },
   {
     icon: Star,
     title: "Tunde K.",
-    message: "The coach videos are gold. Withdrew ₦320k last week. This is real.",
+    message: "The coach videos was telling the truth. Withdrew ₦320k last week. This stuff is real.",
   },
   {
     icon: UserCheck,
     title: "Funke P.",
-    message: "Registered for the ₦40k package yesterday. Onboarding was seamless.",
+    message: "Registered for the ₦20k package yesterday. It is fast and I am doing the training now.",
   },
   {
     icon: TrendingUp,
     title: "Live Withdrawals",
-    message: "People are withdrawing daily from both packages. Proofs are posted in the group.",
+    message: "People are withdrawing daily from both packages. Check your coach group for proofs.",
   },
   {
     icon: Award,
     title: "David E.",
-    message: "Hit my first million target after upgrading. The system works if you follow it.",
+    message: "Hit my first million target inafter upgrading. The system works if you follow the coach instructiion.",
   },
   {
     icon: Users,
-    title: "Community Growing",
+    title: "Join The Growing Community",
     message: "New registrations still pouring in. Don't miss the ₦20k limited offer.",
   },
   {
     icon: DollarSign,
     title: "Mariam S.",
-    message: "Withdrew ₦95,000 within 14 days of registering. Best decision ever.",
+    message: "Withdrew ₦95,000 within 3 days of registering. Best decision ever.",
   },
 
   // More variety
@@ -128,17 +108,17 @@ const pulseItems = [
   {
     icon: Clock3,
     title: "Offer Ending Soon",
-    message: "₦20,000 promo closes soon. Price reverts to ₦35,000 after the timer.",
+    message: "₦20,000 promo closes in few days. Price reverts to ₦35,000 soon.",
   },
   {
     icon: UserCheck,
     title: "Ifeanyi R.",
-    message: "Started small, now on the bigger package. The returns are consistent.",
+    message: "Started small, now on the bigger package. The returns are consistent and I am paying my school fees with the next withdrawal.",
   },
   {
     icon: Star,
     title: "Sarah B.",
-    message: "The testimonials are true. I made my first withdrawal last Friday.",
+    message: "The testimonies are trueeee. I made my first withdrawal of 200k last Friday.",
   },
   {
     icon: TrendingUp,
@@ -152,13 +132,13 @@ const pulseItems = [
   },
   {
     icon: Users,
-    title: "30+ New Members",
+    title: "7,000+ New Members",
     message: "In the past few days alone. Many are already posting proofs.",
   },
   {
     icon: DollarSign,
     title: "Kelvin D.",
-    message: "Withdrew ₦240,000 after 3 weeks. The training made it easy.",
+    message: "Withdrew ₦240,000 after 1 week. The training made it easy.",
   },
   {
     icon: BadgeCheck,
@@ -168,7 +148,7 @@ const pulseItems = [
   {
     icon: Flame,
     title: "Don't Miss Out",
-    message: "Limited slots at ₦20,000. Many are regretting waiting.",
+    message: "Limited slots at ₦20,000. Many will regretting waiting.",
   },
 
   // Final fillers to reach ~30
@@ -195,12 +175,394 @@ const pulseItems = [
   {
     icon: Award,
     title: "Fatima L.",
-    message: "Made ₦450k in my first month. Thank you Glamour team!",
+    message: "Made ₦450k in 8 days, I say na lie..., this thing is easyyy. Thank you Glamour coach!",
   },
   {
-    icon: Clock3,
-    title: "Timer Never Stops",
-    message: "Countdown continues even when you leave the page.",
+    icon: User,
+    title: "Aisha Bello",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Chinedu Okoro",
+    message: "Successfully registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Funke Adebayo",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Tunde Adeyemi",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Blessing Nwosu",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "David Okafor",
+    message: "Successfully registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Ngozi Eze",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Emmanuel Adewale",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Fatima Ibrahim",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Ifeanyi Okeke",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Chioma Onwuka",
+    message: "Successfully registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Oluwatosin Balogun",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Kelvin Chukwu",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Mariam Yusuf",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Segun Ajayi",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Precious Ekanem",
+    message: "Successfully registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Ahmed Musa",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Titilayo Adeola",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Victor Nnamdi",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Sarah Okon",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "John Oluwafemi",
+    message: "Successfully registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Halima Abubakar",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Chukwuma Eze",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Abigail Peters",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Rotimi Williams",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Esther Gabriel",
+    message: "Successfully registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Francis Udo",
+    message: "Registered for the ₦14,000 package.",
+  },
+  {
+    icon: User,
+    title: "Patience Nwankwo",
+    message: "Just registered for the ₦20,000 package.",
+  },
+  {
+    icon: User,
+    title: "Solomon Adegbite",
+    message: "Registered for the ₦14,000 package.",
+  },
+
+  // === 18 Withdrawals ===
+  {
+    icon: User,
+    title: "Aisha Bello",
+    message: "Successfully withdrew ₦185,000.",
+  },
+  {
+    icon: User,
+    title: "Chinedu Okoro",
+    message: "Withdrew ₦472,000 from the package.",
+  },
+  {
+    icon: User,
+    title: "Funke Adebayo",
+    message: "Just cashed out ₦98,000.",
+  },
+  {
+    icon: User,
+    title: "Tunde Adeyemi",
+    message: "Successfully withdrew ₦1,250,000.",
+  },
+  {
+    icon: User,
+    title: "Blessing Nwosu",
+    message: "Withdrew ₦67,000.",
+  },
+  {
+    icon: User,
+    title: "David Okafor",
+    message: "Cashed out ₦340,000.",
+  },
+  {
+    icon: User,
+    title: "Ngozi Eze",
+    message: "Successfully withdrew ₦2,850,000.",
+  },
+  {
+    icon: User,
+    title: "Emmanuel Adewale",
+    message: "Withdrew ₦124,000.",
+  },
+  {
+    icon: User,
+    title: "Fatima Ibrahim",
+    message: "Just cashed out ₦890,000.",
+  },
+  {
+    icon: User,
+    title: "Ifeanyi Okeke",
+    message: "Successfully withdrew ₦47,500.",
+  },
+  {
+    icon: User,
+    title: "Chioma Onwuka",
+    message: "Withdrew ₦675,000.",
+  },
+  {
+    icon: User,
+    title: "Oluwatosin Balogun",
+    message: "Cashed out ₦1,780,000.",
+  },
+  {
+    icon: User,
+    title: "Kelvin Chukwu",
+    message: "Successfully withdrew ₦215,000.",
+  },
+  {
+    icon: User,
+    title: "Mariam Yusuf",
+    message: "Withdrew ₦3,450,000.",
+  },
+  {
+    icon: User,
+    title: "Segun Ajayi",
+    message: "Just cashed out ₦520,000.",
+  },
+  {
+    icon: User,
+    title: "Precious Ekanem",
+    message: "Successfully withdrew ₦1,920,000.",
+  },
+  {
+    icon: User,
+    title: "Titilayo Adeola",
+    message: "Withdrew ₦285,000.",
+  },
+  {
+    icon: User,
+    title: "Victor Nnamdi",
+    message: "Cashed out ₦6,000,000.",
+  },
+  {
+    icon: User,
+    title: "Aisha Bello",
+    message: "Successfully withdrew ₦450,000.",
+  },
+  {
+    icon: User,
+    title: "Chinedu Okoro",
+    message: "Cashed out ₦1,250,000.",
+  },
+  {
+    icon: User,
+    title: "Funke Adebayo",
+    message: "Just withdrew ₦780,000.",
+  },
+  {
+    icon: User,
+    title: "Tunde Adeyemi",
+    message: "Successfully withdrew ₦2,850,000.",
+  },
+  {
+    icon: User,
+    title: "Blessing Nwosu",
+    message: "Cashed out ₦520,000.",
+  },
+  {
+    icon: User,
+    title: "David Okafor",
+    message: "Withdrew ₦3,450,000.",
+  },
+  {
+    icon: User,
+    title: "Ngozi Eze",
+    message: "Successfully withdrew ₦920,000.",
+  },
+  {
+    icon: User,
+    title: "Emmanuel Adewale",
+    message: "Cashed out ₦1,680,000.",
+  },
+  {
+    icon: User,
+    title: "Fatima Ibrahim",
+    message: "Just withdrew ₦2,150,000.",
+  },
+  {
+    icon: User,
+    title: "Ifeanyi Okeke",
+    message: "Successfully withdrew ₦750,000.",
+  },
+  {
+    icon: User,
+    title: "Chioma Onwuka",
+    message: "Cashed out ₦4,200,000.",
+  },
+  {
+    icon: User,
+    title: "Oluwatosin Balogun",
+    message: "Withdrew ₦1,950,000.",
+  },
+  {
+    icon: User,
+    title: "Kelvin Chukwu",
+    message: "Successfully withdrew ₦680,000.",
+  },
+  {
+    icon: User,
+    title: "Mariam Yusuf",
+    message: "Cashed out ₦5,800,000.",
+  },
+  {
+    icon: User,
+    title: "Segun Ajayi",
+    message: "Just withdrew ₦1,320,000.",
+  },
+  {
+    icon: User,
+    title: "Precious Ekanem",
+    message: "Successfully withdrew ₦2,450,000.",
+  },
+  {
+    icon: User,
+    title: "Titilayo Adeola",
+    message: "Cashed out ₦890,000.",
+  },
+  {
+    icon: User,
+    title: "Victor Nnamdi",
+    message: "Withdrew ₦3,750,000.",
+  },
+  {
+    icon: User,
+    title: "Sarah Okon",
+    message: "Successfully withdrew ₦1,150,000.",
+  },
+  {
+    icon: User,
+    title: "John Oluwafemi",
+    message: "Cashed out ₦2,980,000.",
+  },
+  {
+    icon: User,
+    title: "Halima Abubakar",
+    message: "Just withdrew ₦650,000.",
+  },
+  {
+    icon: User,
+    title: "Rotimi Williams",
+    message: "Successfully withdrew ₦4,850,000.",
+  },
+  {
+    icon: User,
+    title: "Esther Gabriel",
+    message: "Cashed out ₦1,480,000.",
+  },
+  {
+    icon: User,
+    title: "Francis Udo",
+    message: "Withdrew ₦2,750,000.",
+  },
+  {
+    icon: User,
+    title: "Patience Nwankwo",
+    message: "Successfully withdrew ₦980,000.",
+  },
+  {
+    icon: User,
+    title: "Solomon Adegbite",
+    message: "Cashed out ₦5,200,000.",
+  },
+  {
+    icon: User,
+    title: "Ahmed Musa",
+    message: "Just withdrew ₦1,850,000.",
+  },
+  {
+    icon: User,
+    title: "Abigail Peters",
+    message: "Successfully withdrew ₦3,250,000.",
+  },
+  {
+    icon: User,
+    title: "Chukwuma Eze",
+    message: "Cashed out ₦2,680,000.",
+  },
+  {
+    icon: User,
+    title: "Fatima Lawal",
+    message: "Withdrew ₦6,000,000.",
   },
 ];
 
