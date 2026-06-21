@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import PricingCard from "@/components/PricingCard";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SitePulse } from "@/components/SitePulse";
 import { PLANS, CONFIG } from "@/config/glamour";
 import {
   ArrowLeft,
@@ -121,6 +122,8 @@ const Pricing = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SitePulse />
+
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16 md:h-20">

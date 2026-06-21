@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { VideoButton } from "@/components/VideoModal";
+import VideoModal, { VideoButton } from "@/components/VideoModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { SitePulse } from "@/components/SitePulse";
 import { CONFIG } from "@/config/glamour";
 import {
   ArrowRight,
@@ -17,8 +19,32 @@ import {
 import logoGold from "@/assets/logo-gold.png"; // ← Your custom golden Glamour logo
 
 const Index = () => {
+  const [showIntroVideo, setShowIntroVideo] = useState(false);
+
+  useEffect(() => {
+    const storageKey = "glamour-intro-video-seen";
+    const hasSeenIntro = window.localStorage.getItem(storageKey);
+
+    if (hasSeenIntro) return;
+
+    const timer = window.setTimeout(() => {
+      setShowIntroVideo(true);
+      window.localStorage.setItem(storageKey, "true");
+    }, 900);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen">
+      <VideoModal
+        isOpen={showIntroVideo}
+        onClose={() => setShowIntroVideo(false)}
+        autoMuted
+        initialVideoIndex={0}
+      />
+      <SitePulse />
+
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16 md:h-20">

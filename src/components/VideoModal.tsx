@@ -20,12 +20,19 @@ const demoVideos = [
 interface VideoModalProps {
   isOpen: boolean;
   onClose: () => void;
+  autoMuted?: boolean;
+  initialVideoIndex?: number;
 }
 
-const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
+const VideoModal = ({
+  isOpen,
+  onClose,
+  autoMuted = false,
+  initialVideoIndex = 0,
+}: VideoModalProps) => {
   const [videoError, setVideoError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(initialVideoIndex);
   const videoRef = useRef<HTMLVideoElement>(null);
   const activeVideo = demoVideos[activeVideoIndex];
 
@@ -33,9 +40,9 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
     if (isOpen) {
       setVideoError(false);
       setIsLoading(true);
-      setActiveVideoIndex(0);
+      setActiveVideoIndex(initialVideoIndex);
     }
-  }, [isOpen]);
+  }, [initialVideoIndex, isOpen]);
 
   useEffect(() => {
     if (!isOpen || videoError || demoVideos.length < 2) return;
@@ -106,6 +113,7 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
               src={activeVideo.src}
               controls
               autoPlay
+              muted={autoMuted}
               className="absolute inset-0 w-full h-full object-contain"
               onError={handleVideoError}
               onLoadedData={handleVideoLoad}
