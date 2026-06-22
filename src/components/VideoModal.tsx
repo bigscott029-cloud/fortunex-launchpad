@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { X, Play, Loader2 } from "lucide-react";
+import { X, Play, Loader2, Volume2, VolumeX } from "lucide-react";
 import { CONFIG } from "@/config/glamour";
 import glamourVideo1 from "@/assets/GLAMOUR - FULL EXPLANATION ON HOW GLAMOUR WORKS-1.mp4";
 import glamourVideo2 from "@/assets/GLAMOUR - FULL EXPLANATION ON HOW GLAMOUR WORKS-2.mp4";
@@ -22,6 +22,7 @@ interface VideoModalProps {
   onClose: () => void;
   autoMuted?: boolean;
   initialVideoIndex?: number;
+  compact?: boolean;
 }
 
 const VideoModal = ({
@@ -29,9 +30,11 @@ const VideoModal = ({
   onClose,
   autoMuted = false,
   initialVideoIndex = 0,
+  compact = false,
 }: VideoModalProps) => {
   const [videoError, setVideoError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isMuted, setIsMuted] = useState(autoMuted);
   const [activeVideoIndex, setActiveVideoIndex] = useState(initialVideoIndex);
   const videoRef = useRef<HTMLVideoElement>(null);
   const activeVideo = demoVideos[activeVideoIndex];
@@ -41,8 +44,9 @@ const VideoModal = ({
       setVideoError(false);
       setIsLoading(true);
       setActiveVideoIndex(initialVideoIndex);
+      setIsMuted(autoMuted);
     }
-  }, [initialVideoIndex, isOpen]);
+  }, [autoMuted, initialVideoIndex, isOpen]);
 
   useEffect(() => {
     if (!isOpen || videoError || demoVideos.length < 2) return;
@@ -58,11 +62,14 @@ const VideoModal = ({
     if (!isOpen || videoError) return;
 
     setIsLoading(true);
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
     videoRef.current?.load();
     videoRef.current?.play().catch(() => {
       setIsLoading(false);
     });
-  }, [activeVideoIndex, isOpen, videoError]);
+  }, [activeVideoIndex, isMuted, isOpen, videoError]);
 
   const handleVideoError = () => {
     setVideoError(true);
@@ -78,28 +85,49 @@ const VideoModal = ({
     setVideoError(false);
   };
 
+  const toggleMuted = () => {
+    setIsMuted((current) => {
+      const nextValue = !current;
+      if (videoRef.current) {
+        videoRef.current.muted = nextValue;
+        if (!nextValue) {
+          videoRef.current.volume = 1;
+        }
+      }
+      return nextValue;
+    });
+  };
+
   if (!isOpen) return null;
 
   return (
     <div 
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-foreground/80 backdrop-blur-sm animate-fade-up"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-foreground/80 p-3 backdrop-blur-sm animate-fade-up sm:p-4"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-card shadow-2xl"
+        className={`relative w-full overflow-hidden rounded-2xl bg-card shadow-2xl ${
+          compact ? "max-w-[min(92vw,360px)] sm:max-w-md" : "max-w-4xl"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/90 text-foreground hover:bg-background transition-colors"
+          className="absolute right-2 top-2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-lg transition-colors hover:bg-gold hover:text-background sm:right-4 sm:top-4"
           aria-label="Close video"
         >
-          <X className="w-6 h-6" />
+          <X className="h-6 w-6" />
         </button>
         
         {/* Video Container */}
-        <div className="relative w-full bg-card" style={{ paddingBottom: "177.778%" }}>
+        <div
+          className="relative w-full bg-card"
+          style={{
+            paddingBottom: compact ? "133.333%" : "177.778%",
+            maxHeight: compact ? "min(70vh, 640px)" : undefined,
+          }}
+        >
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center bg-card">
               <Loader2 className="w-8 h-8 animate-spin text-gold" />
@@ -113,7 +141,7 @@ const VideoModal = ({
               src={activeVideo.src}
               controls
               autoPlay
-              muted={autoMuted}
+              muted={isMuted}
               className="absolute inset-0 w-full h-full object-contain"
               onError={handleVideoError}
               onLoadedData={handleVideoLoad}
@@ -132,9 +160,20 @@ const VideoModal = ({
               onLoad={() => setIsLoading(false)}
             />
           )}
+
+          {!videoError && (
+            <button
+              type="button"
+              onClick={toggleMuted}
+              className="absolute bottom-3 right-3 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-lg backdrop-blur transition-colors hover:bg-gold hover:text-background sm:bottom-4 sm:right-4"
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+            >
+              {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+            </button>
+          )}
         </div>
 
-        {!videoError && (
+        {!videoError && !compact && (
           <div className="grid gap-3 border-t border-border bg-background/95 p-4 sm:grid-cols-2">
             {demoVideos.map((video, index) => (
               <button

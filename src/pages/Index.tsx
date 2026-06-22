@@ -42,6 +42,7 @@ const Index = () => {
         onClose={() => setShowIntroVideo(false)}
         autoMuted
         initialVideoIndex={0}
+        compact
       />
       <SitePulse />
 
