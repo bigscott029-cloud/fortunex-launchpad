@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type KeyboardEvent, type MouseEvent } from "react";
 import { X, Play, Loader2, Volume2, VolumeX } from "lucide-react";
 import { CONFIG } from "@/config/glamour";
 import glamourVideo1 from "@/assets/GLAMOUR - FULL EXPLANATION ON HOW GLAMOUR WORKS-1.mp4";
@@ -203,6 +203,96 @@ const VideoModal = ({
 interface VideoButtonProps {
   className?: string;
 }
+
+export const VideoPreview = ({ className }: VideoButtonProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPreviewMuted, setIsPreviewMuted] = useState(true);
+  const previewRef = useRef<HTMLVideoElement>(null);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsPreviewMuted(true);
+    if (previewRef.current) {
+      previewRef.current.muted = true;
+      previewRef.current.play().catch(() => undefined);
+    }
+  };
+
+  const handlePreviewKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openModal();
+    }
+  };
+
+  const togglePreviewMuted = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+
+    setIsPreviewMuted((current) => {
+      const nextValue = !current;
+      if (previewRef.current) {
+        previewRef.current.muted = nextValue;
+        if (!nextValue) {
+          previewRef.current.volume = 1;
+        }
+        previewRef.current.play().catch(() => undefined);
+      }
+      return nextValue;
+    });
+  };
+
+  return (
+    <>
+      <div className={`flex items-center gap-3 ${className}`}>
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={openModal}
+          onKeyDown={handlePreviewKeyDown}
+          className="group relative aspect-[9/16] w-24 overflow-hidden rounded-2xl border-2 border-gold bg-card shadow-card transition-transform hover:-translate-y-1 hover:shadow-card-hover sm:w-28"
+          aria-label="Open Glamour demo video"
+        >
+          <video
+            ref={previewRef}
+            src={demoVideos[0].src}
+            autoPlay
+            muted={isPreviewMuted}
+            loop
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-80" />
+          <span className="absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-background/90 text-gold shadow">
+            <Play className="h-4 w-4 fill-current" />
+          </span>
+          <button
+            type="button"
+            onClick={togglePreviewMuted}
+            className="absolute bottom-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow transition-colors hover:bg-gold hover:text-background"
+            aria-label={isPreviewMuted ? "Unmute preview video" : "Mute preview video"}
+          >
+            {isPreviewMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+          </button>
+        </div>
+        <button
+          type="button"
+          onClick={openModal}
+          className="text-left text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <span className="block font-semibold text-foreground">Watch Demo</span>
+          <span className="block text-sm">Tap video for full guide</span>
+        </button>
+      </div>
+
+      <VideoModal isOpen={isModalOpen} onClose={closeModal} autoMuted={false} />
+    </>
+  );
+};
 
 export const VideoButton = ({ className }: VideoButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

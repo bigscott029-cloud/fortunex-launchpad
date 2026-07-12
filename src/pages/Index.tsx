@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { VideoButton } from "@/components/VideoModal";
+import { VideoButton, VideoPreview } from "@/components/VideoModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { SitePulse } from "@/components/SitePulse";
@@ -85,7 +85,7 @@ const Index = () => {
                   </Button>
                 </Link>
                 
-                <VideoButton />
+                <VideoPreview />
               </div>
             </div>
             
