@@ -9,7 +9,8 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postbuild": "cp public/_redirects dist/_redirects 2>/dev/null || true"
+    "postbuild": "cp public/_redirects dist/_redirects 2>/dev/null || true",
+    "start": "node server.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
