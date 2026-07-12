@@ -1,10 +1,6 @@
 services:
   - type: web
     name: fortunex-launchpad
-    runtime: static
+    runtime: node
     buildCommand: npm run build
-    staticPublishPath: ./dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    startCommand: npm start
