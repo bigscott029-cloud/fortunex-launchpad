@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { generateWhatsAppUrl, PLANS, CONFIG } from "@/config/glamour";
+import { generateWhatsAppUrl, PLANS, CONFIG, getEffectivePlan } from "@/config/glamour";
 import FlutterwaveButton from "@/components/FlutterwaveButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import logoGold from "@/assets/logo-gold.png";
@@ -28,7 +28,7 @@ const Payment = () => {
   useEffect(() => {
     const requestedPlan = searchParams.get("plan") || "starter";
     const safePlan = requestedPlan in PLANS ? requestedPlan : "starter";
-    const planData = PLANS[safePlan as keyof typeof PLANS];
+    const planData = getEffectivePlan(safePlan as keyof typeof PLANS);
 
     setPlanKey(safePlan);
     setPlanName(planData.name);

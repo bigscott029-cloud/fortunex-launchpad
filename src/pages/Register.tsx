@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { PLANS } from "@/config/glamour";
+import { PLANS, getEffectivePlan } from "@/config/glamour";
 import { useToast } from "@/hooks/use-toast";
 import logoGold from "@/assets/logo-gold.png";
 import { Menu } from "lucide-react";
@@ -29,7 +29,7 @@ const Register = () => {
   useEffect(() => {
     const requestedPlan = searchParams.get("plan") || "starter";
     const safePlan = requestedPlan in PLANS ? requestedPlan : "starter";
-    const planData = PLANS[safePlan as keyof typeof PLANS];
+    const planData = getEffectivePlan(safePlan as keyof typeof PLANS);
 
     setPlanKey(safePlan);
     setPlanName(planData.name);

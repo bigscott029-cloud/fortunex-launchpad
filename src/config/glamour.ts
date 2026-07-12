@@ -23,8 +23,13 @@ export const CONFIG = {
   // Platform stats
   MEMBER_COUNT: "150,000+",
 
-  // Fixed promo deadline. Override this on deployment with VITE_PROMO_ENDS_AT if needed.
-  PROMO_ENDS_AT: import.meta.env.VITE_PROMO_ENDS_AT || "2026-06-28T11:26:06-05:00",
+  // Fixed promo deadline. Update VITE_PROMO_ENDS_AT in .env to control/reset the timer.
+  PROMO_ENDS_AT: import.meta.env.VITE_PROMO_ENDS_AT || "2026-07-27T23:59:59-05:00",
+};
+
+export const PROMO = {
+  plusPromoPrice: parseInt(import.meta.env.VITE_PLUS_PRICE || "20000"),
+  plusRegularPrice: parseInt(import.meta.env.VITE_PLUS_ORIGINAL_PRICE || "35000"),
 };
 
 export const PLANS = {
@@ -46,8 +51,8 @@ export const PLANS = {
   },
   plus: {
     name: "Glamour Plus",
-    price: parseInt(import.meta.env.VITE_PLUS_PRICE || "20000"),
-    originalPrice: parseInt(import.meta.env.VITE_PLUS_ORIGINAL_PRICE || "35000"),
+    price: PROMO.plusPromoPrice,
+    originalPrice: PROMO.plusRegularPrice,
     currency: "₦",
     image: planPlusImage,
     features: [
@@ -67,6 +72,43 @@ export const PLANS = {
     ],
     popular: true,
   },
+};
+
+export const getPromoState = () => {
+  const endsAt = new Date(CONFIG.PROMO_ENDS_AT).getTime();
+  const distance = Number.isNaN(endsAt) ? 0 : endsAt - Date.now();
+  const safeDistance = Math.max(distance, 0);
+
+  return {
+    endsAt,
+    isActive: safeDistance > 0,
+    distance: safeDistance,
+    days: Math.floor(safeDistance / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((safeDistance / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((safeDistance / (1000 * 60)) % 60),
+    seconds: Math.floor((safeDistance / 1000) % 60),
+  };
+};
+
+export const getEffectivePlan = (planKey: keyof typeof PLANS) => {
+  const plan = PLANS[planKey];
+
+  if (planKey !== "plus") {
+    return {
+      ...plan,
+      originalPrice: undefined,
+      promoActive: false,
+    };
+  }
+
+  const promoActive = getPromoState().isActive;
+
+  return {
+    ...plan,
+    price: promoActive ? PROMO.plusPromoPrice : PROMO.plusRegularPrice,
+    originalPrice: promoActive ? PROMO.plusRegularPrice : undefined,
+    promoActive,
+  };
 };
 
 // Generate WhatsApp URL with prefilled message

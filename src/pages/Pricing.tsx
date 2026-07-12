@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import PricingCard from "@/components/PricingCard";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { SitePulse } from "@/components/SitePulse";
-import { PLANS, CONFIG } from "@/config/glamour";
+import { PLANS, CONFIG, PROMO, getEffectivePlan, getPromoState } from "@/config/glamour";
 import {
   ArrowLeft,
   BadgeCheck,
@@ -33,8 +33,8 @@ const rotatingBadgeLabels = [
   "Full Access",
 ];
 
-const comparisonRows = [
-  { label: "Entry fee", plus: "₦20,000", starter: "₦14,000" },
+const getComparisonRows = (promoActive: boolean) => [
+  { label: "Entry fee", plus: promoActive ? "₦20,000 promo" : "₦35,000", starter: "₦14,000" },
   { label: "Glam Link Bonus", plus: "₦16,000 (€8)", starter: "₦12,500 (€6)" },
   { label: "Glam Reward", plus: "₦20,000 (€10)", starter: "₦10,000 (€5)" },
   { label: "1st indirect", plus: "₦800", starter: "₦400" },
@@ -44,9 +44,13 @@ const comparisonRows = [
   { label: "Total potential", plus: "€25/hour", starter: "Starter access" },
 ];
 
-const socialProofStats = [
+const getSocialProofStats = (promoActive: boolean) => [
   { label: "Members", value: CONFIG.MEMBER_COUNT, icon: Users },
-  { label: "Plus promo price", value: "₦20,000", icon: Flame },
+  {
+    label: promoActive ? "Plus promo price" : "Plus regular price",
+    value: promoActive ? "₦20,000" : "₦35,000",
+    icon: Flame,
+  },
   { label: "Potential", value: "€25/hour", icon: TrendingUp },
 ];
 
@@ -78,20 +82,23 @@ const testimonialSlots = [
 ];
 
 const getTimeLeft = () => {
-  const distance = new Date(CONFIG.PROMO_ENDS_AT).getTime() - Date.now();
-  const safeDistance = Math.max(distance, 0);
+  const promoState = getPromoState();
 
   return {
-    days: Math.floor(safeDistance / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((safeDistance / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((safeDistance / (1000 * 60)) % 60),
-    seconds: Math.floor((safeDistance / 1000) % 60),
-    expired: safeDistance === 0,
+    days: promoState.days,
+    hours: promoState.hours,
+    minutes: promoState.minutes,
+    seconds: promoState.seconds,
+    expired: !promoState.isActive,
   };
 };
 
 const Pricing = () => {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+  const promoActive = !timeLeft.expired;
+  const effectivePlusPlan = getEffectivePlan("plus");
+  const comparisonRows = getComparisonRows(promoActive);
+  const socialProofStats = getSocialProofStats(promoActive);
 
   const plusBadgeLabel = useMemo(() => {
     const storageKey = "glamour-plus-badge-label";
@@ -194,10 +201,12 @@ const Pricing = () => {
                 Limited GlamSlots
               </div>
               <h2 className="font-display text-2xl font-bold text-foreground md:text-3xl">
-                Plus promo is live for a fixed window
+                {promoActive ? "Plus promo is live for a fixed window" : "Plus is now at its regular price"}
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-                The ₦20,000 access price is counting down from this launch window. The clock uses one fixed deadline, so it keeps moving when visitors come back.
+                {promoActive
+                  ? "The ₦20,000 access price is counting down from this launch window. The clock uses one fixed deadline, so it keeps moving when visitors come back."
+                  : "The promo window has ended. Admin can reset it by updating VITE_PROMO_ENDS_AT to a future date and redeploying."}
               </p>
             </div>
 
@@ -231,24 +240,28 @@ const Pricing = () => {
           <div className="mb-6 text-center">
             <p className="inline-flex items-center rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-bold text-gold">
               {timeLeft.expired
-                ? "Promo window has closed. Contact your coach for current slot access."
-                : "Grab it fast now: Glamour Plus is ₦20,000 today, normally ₦35,000"}
+                ? "Promo window has closed. Glamour Plus is now ₦35,000."
+                : `Grab it fast now: Glamour Plus is ₦${PROMO.plusPromoPrice.toLocaleString()} today, normally ₦${PROMO.plusRegularPrice.toLocaleString()}`}
             </p>
           </div>
 
           <div className="grid items-start gap-6 md:grid-cols-[1.08fr_0.92fr] md:gap-8 max-w-5xl mx-auto">
             <PricingCard
               planKey="plus"
-              name={PLANS.plus.name}
-              price={PLANS.plus.price}
-              originalPrice={PLANS.plus.originalPrice}
-              currency={PLANS.plus.currency}
-              features={PLANS.plus.features}
-              image={PLANS.plus.image}
-              popular={PLANS.plus.popular}
-              eyebrow="Recommended package"
-              description="The fuller Glamour earning structure with stronger direct rewards, bigger indirects, and more daily earning streams."
-              ctaLabel="Grab Plus Now"
+              name={effectivePlusPlan.name}
+              price={effectivePlusPlan.price}
+              originalPrice={effectivePlusPlan.originalPrice}
+              currency={effectivePlusPlan.currency}
+              features={effectivePlusPlan.features}
+              image={effectivePlusPlan.image}
+              popular={effectivePlusPlan.popular}
+              eyebrow={promoActive ? "Recommended package" : "Full access package"}
+              description={
+                promoActive
+                  ? "The fuller Glamour earning structure with stronger direct rewards, bigger indirects, and more daily earning streams."
+                  : "The fuller Glamour earning structure remains available at the regular access price."
+              }
+              ctaLabel={promoActive ? "Grab Plus Now" : "Register For Plus"}
               badgeLabel={plusBadgeLabel}
               index={0}
             />
