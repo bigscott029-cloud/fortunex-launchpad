@@ -208,10 +208,10 @@ const Index = () => {
                 Watch First
               </p>
               <h2 className="mt-2 text-3xl md:text-4xl font-display font-bold text-foreground">
-                Let the guide sell the next click
+                Watch the videos above, you have made the right choice
               </h2>
               <p className="mt-4 text-muted-foreground leading-7">
-                The first demo video now opens with your new uploaded guide, giving visitors a fast explanation before they choose their package.
+                Purple speedy and other regular users now are a part of something so big, you do not have the time to miss out on this. Jump in and grab your chance now.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <VideoButton className="rounded-xl border border-gold/30 bg-gold/10 px-5" />
