@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 const distDir = join(process.cwd(), "dist");
 const indexFile = join(distDir, "index.html");
-const routes = ["pricing", "register", "payment", "success", "failed"];
+const routes = ["pricing", "login", "register", "payment", "success", "failed"];
 
 if (!existsSync(indexFile)) {
   throw new Error("dist/index.html was not found. Run this after vite build.");
@@ -14,4 +14,3 @@ for (const route of routes) {
   mkdirSync(routeDir, { recursive: true });
   copyFileSync(indexFile, join(routeDir, "index.html"));
 }
-
